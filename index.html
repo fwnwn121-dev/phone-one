@@ -246,9 +246,50 @@ snaptr('track', 'PAGE_VIEW');
            
     </div>
   </div>
-
 <script src="javascript/index.js"></script>
 
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  // Snapchat Click
+  document.querySelectorAll('a[href*="snapchat.com"]').forEach(function(el) {
+    el.addEventListener("click", function() {
+      snaptr('track', 'CUSTOM_EVENT_1', {
+        description: 'Snapchat Click'
+      });
+    });
+  });
+
+  // TikTok Click
+  document.querySelectorAll('a[href*="tiktok.com"]').forEach(function(el) {
+    el.addEventListener("click", function() {
+      snaptr('track', 'CUSTOM_EVENT_2', {
+        description: 'TikTok Click'
+      });
+    });
+  });
+
+  // WhatsApp Click
+  document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp.com"]').forEach(function(el) {
+    el.addEventListener("click", function() {
+      snaptr('track', 'CUSTOM_EVENT_3', {
+        description: 'WhatsApp Click'
+      });
+    });
+  });
+
+  // Google Maps Click
+  document.querySelectorAll('a[href*="maps.app"]').forEach(function(el) {
+    el.addEventListener("click", function() {
+      snaptr('track', 'CUSTOM_EVENT_4', {
+        description: 'Google Maps Click'
+      });
+    });
+  });
+
+});
+</script>
 </body>
 
 </html>
+
