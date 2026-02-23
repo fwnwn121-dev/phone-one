@@ -148,7 +148,7 @@ snaptr('track', 'PAGE_VIEW');
         <img src="imgs/phone one black logo.svg" alt="">
       </div>
       <div class="hed-info">
-        <a href="https://phoneone.sa/" target="_blank" rel="noopener" >  المتجر الالكتروني </a>
+        <a href="https://phoneone.sa/" target="_blank" rel="noopener" id="webstore-link" >  المتجر الالكتروني </a>
       </div>
      </div>
     </div>
@@ -287,9 +287,22 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+  // website visits
+
+   // Web Store Click
+  document.querySelectorAll('a[href*="phoneone.sa"]').forEach(function(el) {
+    el.addEventListener("click", function() {
+      snaptr('track', 'CUSTOM_EVENT_5', {
+        description: 'Web Store Click'
+      });
+    });
+  });
+  
+
 });
 </script>
 </body>
 
 </html>
+
 
