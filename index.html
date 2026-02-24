@@ -251,62 +251,62 @@ snaptr('track', 'PAGE_VIEW');
   </div>
 <script src="javascript/index.js"></script>
 
-  <script>
+<script>
 document.addEventListener("DOMContentLoaded", function() {
 
-  // Snapchat Click
+  function trackAndOpen(eventName, url) {
+    snaptr('track', eventName);
+    setTimeout(function() {
+      window.open(url, "_blank");
+    }, 200);
+  }
+
+  // Snapchat
   document.querySelectorAll('a[href*="snapchat.com"]').forEach(function(el) {
-    el.addEventListener("click", function() {
-      snaptr('track', 'CUSTOM_EVENT_1', {
-        description: 'Snapchat Click'
-      });
+    el.addEventListener("click", function(e) {
+      e.preventDefault();
+      trackAndOpen('CUSTOM_EVENT_1', this.href);
     });
   });
 
-  // TikTok Click
+  // TikTok
   document.querySelectorAll('a[href*="tiktok.com"]').forEach(function(el) {
-    el.addEventListener("click", function() {
-      snaptr('track', 'CUSTOM_EVENT_2', {
-        description: 'TikTok Click'
-      });
+    el.addEventListener("click", function(e) {
+      e.preventDefault();
+      trackAndOpen('CUSTOM_EVENT_2', this.href);
     });
   });
 
-  // WhatsApp Click
+  // WhatsApp
   document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp.com"]').forEach(function(el) {
-    el.addEventListener("click", function() {
-      snaptr('track', 'CUSTOM_EVENT_3', {
-        description: 'WhatsApp Click'
-      });
+    el.addEventListener("click", function(e) {
+      e.preventDefault();
+      trackAndOpen('CUSTOM_EVENT_3', this.href);
     });
   });
 
-  // Google Maps Click
+  // Maps
   document.querySelectorAll('a[href*="maps.app"]').forEach(function(el) {
-    el.addEventListener("click", function() {
-      snaptr('track', 'CUSTOM_EVENT_4', {
-        description: 'Google Maps Click'
-      });
+    el.addEventListener("click", function(e) {
+      e.preventDefault();
+      trackAndOpen('CUSTOM_EVENT_4', this.href);
     });
   });
 
-  // website visits
-
-   // Web Store Click
-  document.querySelectorAll('a[href*="phoneone.sa"]').forEach(function(el) {
-    el.addEventListener("click", function() {
-      snaptr('track', 'CUSTOM_EVENT_5', {
-        description: 'Web Store Click'
-      });
+  // Web Store
+  document.querySelectorAll('#webstore-link').forEach(function(el) {
+    el.addEventListener("click", function(e) {
+      e.preventDefault();
+      trackAndOpen('CUSTOM_EVENT_5', this.href);
     });
   });
-  
 
 });
 </script>
 </body>
 
 </html>
+
 
 
 
