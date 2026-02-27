@@ -255,60 +255,51 @@ snaptr('track', 'PAGE_VIEW');
     </div>
   </div>
 <script src="javascript/index.js"></script>
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
-  function trackAndOpen(snapEvent, googleEvent, url) {
-    // Google Ads Event
-    gtag('event', 'conversion', {
-      'send_to': 'AW-10828240210/' + googleEvent
+  function pushEvent(eventName) {
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      event: eventName
     });
-
-    setTimeout(function() {
-      window.open(url, "_blank");
-    }, 200);
   }
 
   // Snapchat
   document.querySelectorAll('a[href*="snapchat.com"]').forEach(function(el) {
-    el.addEventListener("click", function(e) {
-      e.preventDefault();
-      trackAndOpen('CUSTOM_EVENT_1', 'SNAP_CLICK', this.href);
+    el.addEventListener("click", function() {
+      pushEvent('snap_click');
     });
   });
 
   // TikTok
   document.querySelectorAll('a[href*="tiktok.com"]').forEach(function(el) {
-    el.addEventListener("click", function(e) {
-      e.preventDefault();
-      trackAndOpen('CUSTOM_EVENT_2', 'TIKTOK_CLICK', this.href);
+    el.addEventListener("click", function() {
+      pushEvent('tiktok_click');
     });
   });
 
   // WhatsApp
   document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp.com"]').forEach(function(el) {
-    el.addEventListener("click", function(e) {
-      e.preventDefault();
-      trackAndOpen('CUSTOM_EVENT_3', 'WHATSAPP_CLICK', this.href);
+    el.addEventListener("click", function() {
+      pushEvent('whatsapp_click');
     });
   });
 
-  // Maps
+  // Google Maps
   document.querySelectorAll('a[href*="maps.app"]').forEach(function(el) {
-    el.addEventListener("click", function(e) {
-      e.preventDefault();
-      trackAndOpen('CUSTOM_EVENT_4', 'MAPS_CLICK', this.href);
+    el.addEventListener("click", function() {
+      pushEvent('maps_click');
     });
   });
 
-  // Web Store
-  document.querySelectorAll('#webstore-link').forEach(function(el) {
-    el.addEventListener("click", function(e) {
-      e.preventDefault();
-      trackAndOpen('CUSTOM_EVENT_5', 'WEBSTORE_CLICK', this.href);
+  // Webstore
+  var webstore = document.getElementById("webstore-link");
+  if (webstore) {
+    webstore.addEventListener("click", function() {
+      pushEvent('webstore_click');
     });
-  });
+  }
 
 });
 </script>
@@ -316,6 +307,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </body>
 
 </html>
+
 
 
 
