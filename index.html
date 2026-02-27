@@ -263,10 +263,6 @@ snaptr('track', 'PAGE_VIEW');
 document.addEventListener("DOMContentLoaded", function() {
 
   function trackAndOpen(snapEvent, googleEvent, url) {
-
-    // Snap Pixel
-    snaptr('track', snapEvent);
-
     // Google Ads Event
     gtag('event', 'conversion', {
       'send_to': 'AW-10828240210/' + googleEvent
@@ -323,6 +319,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </body>
 
 </html>
+
 
 
 
